@@ -8,6 +8,7 @@ class Ship():
 
         # Load the ship imagen and get its rect.
         self.image = pygame.image.load('img/spaceship.bmp')
+        self.image = pygame.transform.scale(self.image, (200, 200))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
