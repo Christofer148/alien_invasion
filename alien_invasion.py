@@ -6,7 +6,7 @@ from ship import Ship
 import game_functions as gf
 
 def run_game():
-    #Initialize game and create a screen object.
+    # Initialize game and create a screen object.
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode(
@@ -18,6 +18,10 @@ def run_game():
     ship = Ship(ai_settings, screen)
     # Make a group to store bullets in.
     bullets = Group()
+    aliens = Group()
+
+    # Create the flee of aliens.
+    gf.create_fleet(ai_settings, screen, aliens)
 
     # Start the main loop for the game
     while True:
@@ -26,11 +30,8 @@ def run_game():
         ship.update()
         bullets.update()
         gf.update_bullets(bullets)
-        gf.update_screen(ai_settings, screen, ship, bullets)
-        
-        # Make the most recently drawn screen visible.
-        pygame.display.flip()
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 run_game()    
 
-##### page 256
+##### page 302
